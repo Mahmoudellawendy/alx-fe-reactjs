@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import useRecipeStore from './recipeStore';
 
 function EditRecipeForm({ recipe }) {
@@ -6,45 +6,28 @@ function EditRecipeForm({ recipe }) {
   const [title, setTitle] = useState(recipe.title);
   const [description, setDescription] = useState(recipe.description);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleSubmit = (event) => {
+    event.preventDefault();
     updateRecipe({ id: recipe.id, title, description });
   };
 
   return (
-    <form
-      onSubmit={handleSubmit}
-      style={{
-        marginTop: '20px',
-        display: 'flex',
-        flexDirection: 'column',
-        gap: '10px',
-        maxWidth: '400px',
-      }}
-    >
+    <form onSubmit={handleSubmit} style={{ marginTop: '20px' }}>
+      <h3>Edit Recipe</h3>
       <input
         type="text"
         value={title}
         onChange={(e) => setTitle(e.target.value)}
-        style={{ padding: '8px' }}
+        placeholder="Title"
+        style={{ display: 'block', margin: '10px 0' }}
       />
       <textarea
         value={description}
         onChange={(e) => setDescription(e.target.value)}
-        style={{ padding: '8px', minHeight: '80px' }}
+        placeholder="Description"
+        style={{ display: 'block', margin: '10px 0' }}
       />
-      <button
-        type="submit"
-        style={{
-          padding: '10px',
-          backgroundColor: '#0070f3',
-          color: 'white',
-          border: 'none',
-          cursor: 'pointer',
-        }}
-      >
-        Save
-      </button>
+      <button type="submit">Save Changes</button>
     </form>
   );
 }

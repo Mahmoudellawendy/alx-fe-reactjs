@@ -1,26 +1,25 @@
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import AddRecipeForm from './components/AddRecipeForm';
-import RecipeList from './components/RecipeList';
-import RecipeDetails from './components/RecipeDetails';
+import { useParams, useNavigate } from 'react-router-dom';
+import useRecipeStore from './recipeStore';
+import EditRecipeForm from './EditRecipeForm';
+import DeleteRecipeButton from './DeleteRecipeButton';
 
-function App() {
+function RecipeDetails() {
+  const { id } = useParams();
+  const navigate = useNavigate();
+  const recipe = useRecipeStore((state) =>
+    state.recipes.find((recipe) => recipe.id === parseInt(id))
+  );
+
+  if (!recipe) return <p>Recipe not found</p>;
+
   return (
-    <Router>
-      <Routes>
-        <Route
-          path="/"
-          element={
-            <>
-              <AddRecipeForm />
-              <RecipeList />
-            </>
-          }
-        />
-        <Route path="/recipes/:id" element={<RecipeDetails />} />
-      </Routes>
-    </Router>
+    <div style={{ padding: '20px' }}>
+      <h1>{recipe.title}</h1>
+      <p>{recipe.description}</p>
+      <EditRecipeForm recipe={recipe} />
+      <DeleteRecipeButton id={recipe.id} onDeleted={() => navigate('/')} />
+    </div>
   );
 }
 
-export default App;
+export default RecipeDetails;

@@ -1,4 +1,3 @@
-import React from 'react';
 import useRecipeStore from './recipeStore';
 
 function DeleteRecipeButton({ id, onDeleted }) {
@@ -10,8 +9,11 @@ function DeleteRecipeButton({ id, onDeleted }) {
   };
 
   return (
-    <button onClick={handleDelete} style={{ backgroundColor: 'red', color: 'white' }}>
-      Delete
+    <button
+      onClick={handleDelete}
+      style={{ backgroundColor: 'red', color: 'white', marginTop: '10px' }}
+    >
+      Delete Recipe
     </button>
   );
 }
