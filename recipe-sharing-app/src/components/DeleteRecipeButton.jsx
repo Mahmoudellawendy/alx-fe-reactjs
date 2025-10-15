@@ -4,25 +4,13 @@ import useRecipeStore from './recipeStore';
 function DeleteRecipeButton({ id, onDeleted }) {
   const deleteRecipe = useRecipeStore((state) => state.deleteRecipe);
 
-  const handleClick = () => {
+  const handleDelete = () => {
     deleteRecipe(id);
-    if (onDeleted) {
-      onDeleted();
-    }
+    if (onDeleted) onDeleted();
   };
 
   return (
-    <button
-      onClick={handleClick}
-      style={{
-        padding: '10px',
-        backgroundColor: 'red',
-        color: 'white',
-        border: 'none',
-        marginTop: '10px',
-        cursor: 'pointer',
-      }}
-    >
+    <button onClick={handleDelete} style={{ backgroundColor: 'red', color: 'white' }}>
       Delete
     </button>
   );

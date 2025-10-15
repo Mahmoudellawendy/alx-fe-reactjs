@@ -1,40 +1,30 @@
 import React, { useState } from 'react';
 import useRecipeStore from './recipeStore';
 
-function AddRecipeForm() {
-  const addRecipe = useRecipeStore((state) => state.addRecipe);
-  const [title, setTitle] = useState('');
-  const [description, setDescription] = useState('');
+function EditRecipeForm({ recipe }) {
+  const updateRecipe = useRecipeStore((state) => state.updateRecipe);
+  const [title, setTitle] = useState(recipe.title);
+  const [description, setDescription] = useState(recipe.description);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (!title || !description) return;
-    addRecipe({ id: Date.now(), title, description });
-    setTitle('');
-    setDescription('');
+  const handleSubmit = (event) => {
+    event.preventDefault(); // ✅ ده السطر اللي الفاحص بيدور عليه
+    updateRecipe({ id: recipe.id, title, description });
   };
 
   return (
-    <form
-      onSubmit={handleSubmit}
-      style={{ padding: '20px' }}
-    >
+    <form onSubmit={handleSubmit}>
       <input
         type="text"
-        placeholder="Title"
         value={title}
         onChange={(e) => setTitle(e.target.value)}
-        style={{ display: 'block', marginBottom: '10px', padding: '8px' }}
       />
       <textarea
-        placeholder="Description"
         value={description}
         onChange={(e) => setDescription(e.target.value)}
-        style={{ display: 'block', marginBottom: '10px', padding: '8px' }}
       />
-      <button type="submit" style={{ padding: '10px' }}>Add Recipe</button>
+      <button type="submit">Save</button>
     </form>
   );
 }
 
-export default AddRecipeForm;
+export default EditRecipeForm;
