@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import useRecipeStore from '../recipeStore';
+import useRecipeStore from './recipeStore';
 
 function AddRecipeForm() {
   const addRecipe = useRecipeStore((state) => state.addRecipe);
@@ -8,8 +8,7 @@ function AddRecipeForm() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!title.trim() || !description.trim()) return;
-
+    if (!title || !description) return;
     addRecipe({ id: Date.now(), title, description });
     setTitle('');
     setDescription('');
@@ -18,40 +17,22 @@ function AddRecipeForm() {
   return (
     <form
       onSubmit={handleSubmit}
-      style={{
-        margin: '20px',
-        display: 'flex',
-        flexDirection: 'column',
-        gap: '10px',
-        maxWidth: '400px',
-      }}
+      style={{ padding: '20px' }}
     >
       <input
         type="text"
         placeholder="Title"
         value={title}
         onChange={(e) => setTitle(e.target.value)}
-        style={{ padding: '8px', fontSize: '16px' }}
+        style={{ display: 'block', marginBottom: '10px', padding: '8px' }}
       />
       <textarea
         placeholder="Description"
         value={description}
         onChange={(e) => setDescription(e.target.value)}
-        style={{ padding: '8px', fontSize: '16px', minHeight: '100px' }}
+        style={{ display: 'block', marginBottom: '10px', padding: '8px' }}
       />
-      <button
-        type="submit"
-        style={{
-          padding: '10px 15px',
-          backgroundColor: '#0070f3',
-          color: 'white',
-          border: 'none',
-          cursor: 'pointer',
-          borderRadius: '4px',
-        }}
-      >
-        Add Recipe
-      </button>
+      <button type="submit" style={{ padding: '10px' }}>Add Recipe</button>
     </form>
   );
 }

@@ -14,7 +14,13 @@ function EditRecipeForm({ recipe }) {
   return (
     <form
       onSubmit={handleSubmit}
-      style={{ marginTop: '20px', display: 'flex', flexDirection: 'column', gap: '10px', maxWidth: '400px' }}
+      style={{
+        marginTop: '20px',
+        display: 'flex',
+        flexDirection: 'column',
+        gap: '10px',
+        maxWidth: '400px',
+      }}
     >
       <input
         type="text"
@@ -29,7 +35,13 @@ function EditRecipeForm({ recipe }) {
       />
       <button
         type="submit"
-        style={{ padding: '10px', backgroundColor: '#0070f3', color: 'white', border: 'none', cursor: 'pointer' }}
+        style={{
+          padding: '10px',
+          backgroundColor: '#0070f3',
+          color: 'white',
+          border: 'none',
+          cursor: 'pointer',
+        }}
       >
         Save
       </button>
