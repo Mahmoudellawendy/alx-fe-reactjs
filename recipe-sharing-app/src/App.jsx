@@ -12,10 +12,20 @@ function App() {
       <div style={{ fontFamily: 'Arial, sans-serif', maxWidth: '800px', margin: '0 auto' }}>
         <h1 style={{ textAlign: 'center' }}>Recipe Sharing App</h1>
         <SearchBar />
-        <AddRecipeForm />
-        <FavoritesList />
-        <RecommendationsList />
-        <RecipeList />
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <>
+                <AddRecipeForm />
+                <FavoritesList />
+                <RecommendationsList />
+                <RecipeList />
+              </>
+            }
+          />
+          <Route path="/recipe/:id" element={<RecipeDetails />} />
+        </Routes>
       </div>
     </Router>
   );
