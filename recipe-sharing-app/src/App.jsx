@@ -3,25 +3,19 @@ import AddRecipeForm from './components/AddRecipeForm';
 import RecipeList from './components/RecipeList';
 import RecipeDetails from './components/RecipeDetails';
 import SearchBar from './components/SearchBar';
+import FavoritesList from './components/FavoritesList';
+import RecommendationsList from './components/RecommendationsList';
 
 function App() {
   return (
     <Router>
       <div style={{ fontFamily: 'Arial, sans-serif', maxWidth: '800px', margin: '0 auto' }}>
-        <h1 style={{ textAlign: 'center', margin: '20px 0' }}>Recipe Sharing App</h1>
-        <Routes>
-          <Route
-            path="/"
-            element={
-              <>
-                <SearchBar />
-                <AddRecipeForm />
-                <RecipeList />
-              </>
-            }
-          />
-          <Route path="/recipes/:id" element={<RecipeDetails />} />
-        </Routes>
+        <h1 style={{ textAlign: 'center' }}>Recipe Sharing App</h1>
+        <SearchBar />
+        <AddRecipeForm />
+        <FavoritesList />
+        <RecommendationsList />
+        <RecipeList />
       </div>
     </Router>
   );
