@@ -3,21 +3,26 @@ import { Link } from 'react-router-dom';
 import useRecipeStore from './recipeStore';
 
 function RecipeList() {
+  const filtered = useRecipeStore((state) => state.filteredRecipes);
   const recipes = useRecipeStore((state) => state.recipes);
+  const searchTerm = useRecipeStore((state) => state.searchTerm);
+
+  // إذا ما في بحث شغال، اعرض القائمة الكاملة
+  const displayList = (searchTerm.trim() === '') ? recipes : filtered;
 
   return (
     <div style={{ padding: '20px' }}>
-      {recipes.length === 0 ? (
-        <p>No recipes available.</p>
+      {displayList.length === 0 ? (
+        <p>No recipes found.</p>
       ) : (
-        recipes.map((recipe) => (
+        displayList.map((recipe) => (
           <div
             key={recipe.id}
             style={{
               marginBottom: '15px',
               border: '1px solid #ccc',
               padding: '10px',
-              borderRadius: '5px',
+              borderRadius: '4px'
             }}
           >
             <Link
