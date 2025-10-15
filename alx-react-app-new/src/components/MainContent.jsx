@@ -1,8 +1,8 @@
 function MainContent() {
   return (
-    <main style={{ padding: '20px', backgroundColor: '#e0e0e0' }}>
+    <main style={{ padding: '20px', backgroundColor: '#e0e0e0', textAlign: 'center' }}>
       <p style={{ fontSize: '18px' }}>
-        Welcome to the main content area. Explore the cities you love!
+        I love to visit New York, Paris, and Tokyo.
       </p>
     </main>
   );
