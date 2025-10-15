@@ -1,9 +1,9 @@
+import React from 'react';
+
 function WelcomeMessage() {
   return (
-    <div>
-      <h1>Hello everyone, I am learning React at ALX!</h1>
-      <p>This is a simple JSX component.</p>
-      <p>I am learning about JSX!</p>
+    <div style={{ padding: '10px', backgroundColor: '#eee', textAlign: 'center' }}>
+      <h2>Welcome to the React Application</h2>
     </div>
   );
 }
