@@ -1,10 +1,10 @@
 import React from 'react';
-import RecipeList from './components/RecipeList';
 import AddRecipeForm from './components/AddRecipeForm';
+import RecipeList from './components/RecipeList';
 
 function App() {
   return (
-    <div style={{ fontFamily: 'Arial, sans-serif', maxWidth: '800px', margin: '0 auto' }}>
+    <div>
       <h1 style={{ textAlign: 'center', marginTop: '20px' }}>Recipe Sharing App</h1>
       <AddRecipeForm />
       <RecipeList />
