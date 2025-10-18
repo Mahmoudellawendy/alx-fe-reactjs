@@ -4,7 +4,7 @@ import FormikForm from './components/formikForm';
 
 function App() {
   return (
-    <div style={{ padding: 20 }}>
+    <div>
       <h2>Controlled Components Form</h2>
       <RegistrationForm />
       <hr />
