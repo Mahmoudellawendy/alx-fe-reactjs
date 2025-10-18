@@ -4,11 +4,15 @@ import FormikForm from './components/formikForm';
 
 function App() {
   return (
-    <div>
-      <h2>Controlled Components Form</h2>
+    <div style={{ padding: '20px' }}>
+      <h1>React Form Handling</h1>
+
+      <h2>1. Controlled Components Form</h2>
       <RegistrationForm />
-      <hr />
-      <h2>Formik Form</h2>
+
+      <hr style={{ margin: '40px 0' }} />
+
+      <h2>2. Formik Form with Yup Validation</h2>
       <FormikForm />
     </div>
   );

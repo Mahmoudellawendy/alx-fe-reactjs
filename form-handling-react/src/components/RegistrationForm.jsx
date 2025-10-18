@@ -9,8 +9,8 @@ const RegistrationForm = () => {
   const validate = () => {
     const newErrors = {};
     if (!username) newErrors.username = 'Username is required';
-    if (!email) newErrors.email = 'Email is required';   // <== هنا شرط التحقق
-    if (!password) newErrors.password = 'Password is required';  // <== هنا شرط التحقق
+    if (!email) newErrors.email = 'Email is required';
+    if (!password) newErrors.password = 'Password is required';
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
@@ -18,34 +18,41 @@ const RegistrationForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!validate()) return;
-    alert(`Registered with: ${username}, ${email}`);
+
+    alert(`User Registered:\nUsername: ${username}\nEmail: ${email}`);
   };
 
   return (
     <form onSubmit={handleSubmit}>
-      <input
-        type="text"
-        placeholder="Username"
-        value={username}
-        onChange={e => setUsername(e.target.value)}
-      />
-      {errors.username && <div style={{ color: 'red' }}>{errors.username}</div>}
+      <div>
+        <label>Username:</label><br />
+        <input
+          type="text"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+        />
+        {errors.username && <div style={{ color: 'red' }}>{errors.username}</div>}
+      </div>
 
-      <input
-        type="email"
-        placeholder="Email"
-        value={email}
-        onChange={e => setEmail(e.target.value)}
-      />
-      {errors.email && <div style={{ color: 'red' }}>{errors.email}</div>}
+      <div>
+        <label>Email:</label><br />
+        <input
+          type="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
+        {errors.email && <div style={{ color: 'red' }}>{errors.email}</div>}
+      </div>
 
-      <input
-        type="password"
-        placeholder="Password"
-        value={password}
-        onChange={e => setPassword(e.target.value)}
-      />
-      {errors.password && <div style={{ color: 'red' }}>{errors.password}</div>}
+      <div>
+        <label>Password:</label><br />
+        <input
+          type="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
+        {errors.password && <div style={{ color: 'red' }}>{errors.password}</div>}
+      </div>
 
       <button type="submit">Register</button>
     </form>
