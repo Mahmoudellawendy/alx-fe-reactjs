@@ -18,7 +18,6 @@ const RegistrationForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!validate()) return;
-
     alert(`User Registered:\nUsername: ${username}\nEmail: ${email}`);
   };
 
@@ -29,7 +28,7 @@ const RegistrationForm = () => {
         <input
           type="text"
           value={username}
-          onChange={(e) => setUsername(e.target.value)}
+          onChange={e => setUsername(e.target.value)}
         />
         {errors.username && <div style={{ color: 'red' }}>{errors.username}</div>}
       </div>
@@ -39,7 +38,7 @@ const RegistrationForm = () => {
         <input
           type="email"
           value={email}
-          onChange={(e) => setEmail(e.target.value)}
+          onChange={e => setEmail(e.target.value)}
         />
         {errors.email && <div style={{ color: 'red' }}>{errors.email}</div>}
       </div>
@@ -49,7 +48,7 @@ const RegistrationForm = () => {
         <input
           type="password"
           value={password}
-          onChange={(e) => setPassword(e.target.value)}
+          onChange={e => setPassword(e.target.value)}
         />
         {errors.password && <div style={{ color: 'red' }}>{errors.password}</div>}
       </div>
