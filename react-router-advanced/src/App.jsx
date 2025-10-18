@@ -6,20 +6,21 @@ import {
   Navigate,
 } from 'react-router-dom';
 
-import Home from './pages/Home';
-import Profile from './pages/Profile';
-import Post from './pages/Post';
-import Login from './pages/Login';
-import NotFound from './pages/NotFound';
+import Home from './components/Home';
+import Profile from './components/Profile';
+import Post from './components/Post';
+import Login from './components/Login';
+import NotFound from './components/NotFound';
 import ProtectedRoute from './components/ProtectedRoute';
 
 function App() {
   return (
     <Router>
       <Routes>
+        {/* Public Route */}
         <Route path="/" element={<Home />} />
 
-        {/* Protected Route */}
+        {/* Protected Route with Nested Routes */}
         <Route
           path="/profile/*"
           element={
@@ -29,13 +30,13 @@ function App() {
           }
         />
 
-        {/* Dynamic route */}
+        {/* Dynamic Route */}
         <Route path="/post/:postId" element={<Post />} />
 
-        {/* Login */}
+        {/* Login Route */}
         <Route path="/login" element={<Login />} />
 
-        {/* Fallback */}
+        {/* 404 Not Found */}
         <Route path="*" element={<NotFound />} />
       </Routes>
     </Router>
